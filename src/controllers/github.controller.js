@@ -51,7 +51,7 @@ export const analyzeProfile = async (req, res) => {
       twitter_username: githubUser.twitter_username,
       total_stars: totalStars,
       total_forks: totalForks,
-      account_created_at: githubUser.created_at,
+      account_created_at: new Date(githubUser.created_at)
     };
 
     // Save to MySQL

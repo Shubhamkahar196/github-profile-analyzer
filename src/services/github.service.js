@@ -17,7 +17,7 @@ export const getGithubProfile = async(username)=>{
 export const getGithubRepositories = async(username)=>{
     try {
         const response = await axios.get(
-            `${GITHUB_BASE_URL}/users/${username}/repo`
+            `${GITHUB_BASE_URL}/users/${username}/repos`
         )
         return response.data;
     } catch (error) {
