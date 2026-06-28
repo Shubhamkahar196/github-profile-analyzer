@@ -1,10 +1,9 @@
-import pool from '../config/db.js';
+import pool from "../config/db.js";
 
-
-// insert a new analyzed profile
-
-export const createProfile = async(profile)=>{
-      const query = `
+// Create Profile
+ 
+export const createProfile = async (profile) => {
+  const query = `
     INSERT INTO profiles (
       username,
       name,
@@ -26,7 +25,7 @@ export const createProfile = async(profile)=>{
     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
   `;
 
-  const values= [
+  const values = [
     profile.username,
     profile.name,
     profile.bio,
@@ -37,6 +36,7 @@ export const createProfile = async(profile)=>{
     profile.following,
     profile.public_gists,
     profile.company,
+    profile.location, 
     profile.blog,
     profile.twitter_username,
     profile.total_stars,
@@ -44,18 +44,32 @@ export const createProfile = async(profile)=>{
     profile.account_created_at,
   ];
 
-  const [result] = await pool.execute(query,values);
+  const [result] = await pool.execute(query, values);
+
   return result;
-}
+};
 
 
+  // Get All Profiles
+ 
+export const getAllProfiles = async () => {
+  const [rows] = await pool.execute(`
+      SELECT *
+      FROM profiles
+      ORDER BY analyzed_at DESC
+  `);
 
-// fetch all analyzed profiles
+  return rows;
+};
+
+
+//  Get Single Profile
 
 export const getProfileByUsername = async (username) => {
   const [rows] = await pool.execute(
     `
-      SELECT * FROM profiles
+      SELECT *
+      FROM profiles
       WHERE username = ?
     `,
     [username]
