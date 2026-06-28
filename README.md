@@ -116,6 +116,10 @@ Import the provided `schema.sql` file.
 
 ---
 
+## LIVE URL
+```http
+https://github-profile-analyzer-kryq.onrender.com
+```
 ##  API Endpoints
 
 ### Analyze GitHub Profile
