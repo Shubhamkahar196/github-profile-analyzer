@@ -1,19 +1,19 @@
-# GitHub Profile Analyzer API
+# GitHub Profile Analyzer API 
 
-A Node.js and Express.js REST API that analyzes a GitHub user's public profile using the GitHub API and stores useful insights in a MySQL database.
+A RESTful API built with **Node.js**, **Express.js**, and **MySQL** that analyzes a GitHub user's public profile using the GitHub REST API and stores useful profile insights in a MySQL database.
 
 ---
 
 ##  Features
 
-- Analyze any public GitHub profile
-- Fetch data using GitHub Public API
-- Store profile insights in MySQL
-- Get all analyzed profiles
-- Get a single analyzed profile
+- Analyze any public GitHub profile using username
+- Fetch data from GitHub Public API
+- Store analyzed profile data in MySQL
+- Retrieve all analyzed GitHub profiles
+- Retrieve a single analyzed profile
 - MVC Architecture
-- MySQL Database Integration
-- RESTful API
+- Cloud MySQL (Aiven)
+- Live Deployment on Render
 
 ---
 
@@ -33,9 +33,16 @@ A Node.js and Express.js REST API that analyzes a GitHub user's public profile u
 ```text
 github-profile-analyzer/
 │
+├── database/
+│   └── schema.sql
+│
+├── postman/
+│   └── github-analyzer-profile.postman_collection.json
+│
 ├── src/
 │   ├── config/
-│   │   └── db.js
+│   │   ├── db.js
+│   │   └── env.js
 │   │
 │   ├── controllers/
 │   │   └── github.controller.js
@@ -52,18 +59,15 @@ github-profile-analyzer/
 │   ├── app.js
 │   └── server.js
 │
-├── database/
-│   └── schema.sql
-│
 ├── .env.example
+├── .gitignore
 ├── package.json
-├── README.md
-└── .gitignore
+└── README.md
 ```
 
 ---
 
-##  Installation
+#  Installation
 
 ### Clone Repository
 
@@ -71,19 +75,21 @@ github-profile-analyzer/
 git clone https://github.com/Shubhamkahar196/github-profile-analyzer.git
 ```
 
-### Go to project
+### Move into Project
 
 ```bash
 cd github-profile-analyzer
 ```
 
-### Install dependencies
+### Install Dependencies
 
 ```bash
 npm install
 ```
 
-### Configure Environment Variables
+---
+
+##  Configure Environment Variables
 
 Create a `.env` file.
 
@@ -91,12 +97,15 @@ Create a `.env` file.
 PORT=5000
 
 DB_HOST=localhost
+DB_PORT=3306
 DB_USER=root
 DB_PASSWORD=your_password
 DB_NAME=github_profile_analyzer
 ```
 
-### Run Project
+---
+
+##  Run Project
 
 ```bash
 npm run dev
@@ -104,27 +113,43 @@ npm run dev
 
 ---
 
-##  Database Setup
+#  Database Setup
 
-Create a MySQL database
+Create Database
 
 ```sql
 CREATE DATABASE github_profile_analyzer;
 ```
 
-Import the provided `schema.sql` file.
+Import
+
+```
+database/schema.sql
+```
+
+into MySQL.
 
 ---
 
-## LIVE URL
+##  Live API
+
+Base URL
+
+```text
+https://github-profile-analyzer-kryq.onrender.com
+```
+
+Example Endpoint
 
 ```http
- https://github-profile-analyzer-kryq.onrender.com
-EXAMPLE  https://github-profile-analyzer-kryq.onrender.com/api/github/analyze/SkDeveloper2
+POST https://github-profile-analyzer-kryq.onrender.com/api/github/analyze/octocat
 ```
-##  API Endpoints
 
-### Analyze GitHub Profile
+---
+
+#  API Endpoints
+
+## Analyze GitHub Profile
 
 ```http
 POST /api/github/analyze/:username
@@ -138,7 +163,7 @@ POST /api/github/analyze/octocat
 
 ---
 
-### Get All Profiles
+## Get All Profiles
 
 ```http
 GET /api/github/profiles
@@ -146,7 +171,7 @@ GET /api/github/profiles
 
 ---
 
-### Get Single Profile
+## Get Single Profile
 
 ```http
 GET /api/github/profiles/:username
@@ -160,7 +185,7 @@ GET /api/github/profiles/octocat
 
 ---
 
-##  Stored Insights
+#  Stored Insights
 
 The API stores:
 
@@ -168,7 +193,7 @@ The API stores:
 - Name
 - Bio
 - Avatar URL
-- Profile URL
+- GitHub Profile URL
 - Public Repositories
 - Followers
 - Following
@@ -179,11 +204,23 @@ The API stores:
 - Twitter Username
 - Total Stars
 - Total Forks
-- GitHub Account Creation Date
+- Account Created Date
 
 ---
 
-## Sample Response
+#  Postman Collection
+
+The exported Postman collection is available inside the **postman** folder.
+
+```
+postman/github-analyzer-profile.postman_collection.json
+```
+
+Import this collection into Postman to test all API endpoints.
+
+---
+
+#  Sample Response
 
 ```json
 {
@@ -191,7 +228,9 @@ The API stores:
   "message": "GitHub profile analyzed successfully.",
   "data": {
     "username": "octocat",
+    "name": "The Octocat",
     "followers": 23092,
+    "following": 9,
     "public_repos": 8,
     "total_stars": 21613,
     "total_forks": 165177
@@ -201,6 +240,21 @@ The API stores:
 
 ---
 
-## 👨‍💻 Author
+# 👨‍💻 Author
 
-Shubham Kahar
+**Shubham Kahar**
+
+📧 Email:
+shubhamkahar196@gmail.com
+
+🔗 GitHub:
+https://github.com/Shubhamkahar196
+
+🔗 LinkedIn:
+https://www.linkedin.com/in/shubham-kahar-586199275
+
+---
+
+# 📄 License
+
+This project was developed for learning and assignment purposes.

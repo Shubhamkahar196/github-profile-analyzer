@@ -1,0 +1,43 @@
+{
+  "info": {
+    "_postman_id": "c95c7acf-7652-47ec-b1f3-ec0a66380300",
+    "name": "github-analyzer-profile",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "30001181",
+    "_collection_link": "https://go.postman.co/collection/30001181-c95c7acf-7652-47ec-b1f3-ec0a66380300?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "fetch from github",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    },
+    {
+      "name": "Allprofile",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    },
+    {
+      "name": "Single-profile",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    },
+    {
+      "name": "Live URL",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    }
+  ]
+}
