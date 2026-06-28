@@ -117,10 +117,10 @@ Import the provided `schema.sql` file.
 ---
 
 ## LIVE URL
+
 ```http
  https://github-profile-analyzer-kryq.onrender.com
-
-EXAMPLE - https://github-profile-analyzer-kryq.onrender.com/api/github/analyze/SkDeveloper2
+EXAMPLE  https://github-profile-analyzer-kryq.onrender.com/api/github/analyze/SkDeveloper2
 ```
 ##  API Endpoints
 
